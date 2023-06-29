@@ -44,7 +44,7 @@
             // Limpiar el contenido previo de la tabla
             tableBody.innerHTML = '';
   
-            usuariosArray.forEach(async (user) => {
+            usuariosArray.forEach(async (user, index) => {
               const email = user.email;
               const Nombre = user.Nombre;
               const Apellido = user.Apellido;
@@ -82,6 +82,8 @@
                 <td class="text-center">${email}</td>
                 <td class="text-center">${Fecha}</td>
               `;
+                // Agregar la clase CSS correspondiente a la fila
+                newRow.classList.add(index % 2 === 0 ? 'fila-par' : 'fila-impar');
             });
           } else {
             console.log('No se encontraron datos en la base de datos');

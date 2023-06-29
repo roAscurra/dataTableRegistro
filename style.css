@@ -1,0 +1,20 @@
+.fila-par {
+    background-color: #f2f2f2; /* Color de fondo para las filas pares (gris claro) */
+  }
+  
+  .fila-impar {
+    background-color: #dcdcdc; /* Color de fondo para las filas impares (gris oscuro) */
+  }
+  #boton{
+    background-color: #616161;
+    color: #fff;
+}
+body{
+    background-color: #f2f2f2;
+}
+div{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1%;
+}
