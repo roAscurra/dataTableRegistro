@@ -70,7 +70,6 @@
                   console.log(`Error al verificar el estado de verificación para el usuario ${Nombre}:`, error);
                 }
               }
-  
               // Agregar una nueva fila a la tabla con los datos del usuario
               const newRow = tableBody.insertRow();
               newRow.innerHTML = `
