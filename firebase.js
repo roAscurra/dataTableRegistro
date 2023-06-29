@@ -27,14 +27,23 @@
  export const leerDatosUsuarios = () => {
     try {
       const usuariosRef = ref(db, 'Usuarios');
+      const tableBody = document.getElementById('list'); // Obtener el cuerpo de la tabla HTML
   
       get(usuariosRef)
         .then((snapshot) => {
           if (snapshot.exists()) {
             const usuariosData = snapshot.val();
   
-            Object.keys(usuariosData).forEach(async (key) => {
-              const user = usuariosData[key];
+            // Convertir los datos de usuarios en un array para facilitar la manipulación y ordenamiento
+            const usuariosArray = Object.keys(usuariosData).map((key) => usuariosData[key]);
+  
+            // Ordenar el array de usuarios por fecha en orden ascendente
+            usuariosArray.sort((a, b) => new Date(a.Fecha) - new Date(b.Fecha));
+  
+            // Limpiar el contenido previo de la tabla
+            tableBody.innerHTML = '';
+  
+            usuariosArray.forEach(async (user) => {
               const email = user.email;
               const Nombre = user.Nombre;
               const Apellido = user.Apellido;
@@ -61,7 +70,18 @@
                 }
               }
   
-              console.log(`Nombre: ${Nombre}, Correo: ${email}, Verificado: ${verificado}`);
+              // Agregar una nueva fila a la tabla con los datos del usuario
+              const newRow = tableBody.insertRow();
+              newRow.innerHTML = `
+              <td class="text-center">${verificado}</td>
+                <td class="text-center">${Nombre}</td>
+                <td class="text-center">${Apellido}</td>
+                <td class="text-center">${Nacimiento}</td>
+                <td class="text-center">${Dni}</td>
+                <td class="text-center">${Celular}</td>
+                <td class="text-center">${email}</td>
+                <td class="text-center">${Fecha}</td>
+              `;
             });
           } else {
             console.log('No se encontraron datos en la base de datos');
@@ -74,6 +94,7 @@
       console.log('Error al leer los datos de la base de datos:', error);
     }
   };
+  
   
   
   
