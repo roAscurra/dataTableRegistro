@@ -39,7 +39,8 @@
   
             // Ordenar el array de usuarios por fecha en orden ascendente
             usuariosArray.sort((a, b) => new Date(a.Fecha) - new Date(b.Fecha));
-  
+            //usuariosArray.sort((a, b) => new Date(b.Fecha) - new Date(a.Fecha)); -> forma descendente
+
             // Limpiar el contenido previo de la tabla
             tableBody.innerHTML = '';
   
@@ -73,7 +74,7 @@
               // Agregar una nueva fila a la tabla con los datos del usuario
               const newRow = tableBody.insertRow();
               newRow.innerHTML = `
-              <td class="text-center">${verificado}</td>
+                <td class="text-center">${verificado}</td>
                 <td class="text-center">${Nombre}</td>
                 <td class="text-center">${Apellido}</td>
                 <td class="text-center">${Nacimiento}</td>
